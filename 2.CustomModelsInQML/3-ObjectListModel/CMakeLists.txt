@@ -8,8 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick QuickControls2 REQUIRED)
 
 qt_add_executable(app3-ObjectListModel
-    main.cpp person.h person.cpp
+    main.cpp
 )
+
+add_subdirectory(module)
 
 qt_add_qml_module(app3-ObjectListModel
     URI 3-ObjectListModel
@@ -29,4 +31,6 @@ target_compile_definitions(app3-ObjectListModel
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(app3-ObjectListModel
     PRIVATE Qt6::Quick
-    PRIVATE Qt6::QuickControls2)
+    PRIVATE Qt6::QuickControls2
+    PRIVATE myModuleLibplugin
+)

@@ -2,6 +2,7 @@
 #define PERSON_H
 
 #include <QObject>
+#include <QQmlComponent>
 
 class Person : public QObject
 {
@@ -9,7 +10,7 @@ class Person : public QObject
     Q_PROPERTY(QString names READ names WRITE setNames NOTIFY namesChanged)
     Q_PROPERTY(QString favoriteColor READ favoriteColor WRITE setFavoriteColor NOTIFY favoriteColorChanged)
     Q_PROPERTY(int age READ age WRITE setAge NOTIFY ageChanged)
-
+    QML_ELEMENT
 
 public:
     explicit Person(QObject *parent = nullptr);
@@ -37,6 +38,22 @@ private:
     QString m_favoriteColor;
 
     int m_age;
+};
+
+class PersonList : public QObject
+{
+  Q_OBJECT
+  Q_PROPERTY(QQmlListProperty<Person> persons READ getPersons CONSTANT)
+  QML_ELEMENT
+
+public:
+  explicit PersonList(QObject *parent = nullptr);
+
+  QQmlListProperty<Person> getPersons();
+
+
+private:
+  QList<Person *> mPersonList;
 };
 
 #endif // PERSON_H
