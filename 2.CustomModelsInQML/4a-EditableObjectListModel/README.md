@@ -11,7 +11,5 @@ Q_PROPERTY(QQmlListProperty<Person> persons READ getPersons NOTIFY personsChange
 ...
 ```
 - A signal is important in order to refresh list on changes. 
- - ```QQmlListProperty``` translates into a js ```list``` in qml that can can be manipulated normally as an array in js. Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-
-
+- ```QQmlListProperty``` translates into a js ```list``` in qml that can can be manipulated normally as an array in js. Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+- 
