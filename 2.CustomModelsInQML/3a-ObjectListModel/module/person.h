@@ -39,7 +39,7 @@ private:
 
     int m_age;
 };
-
+// person object list provider
 class PersonList : public QObject
 {
   Q_OBJECT
