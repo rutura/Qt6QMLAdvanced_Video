@@ -1,4 +1,4 @@
-# 3-ObjectsModel
+# 3a-ObjectsModel
  - Exploring object list models :
 
     - We have a QObject based Person class
