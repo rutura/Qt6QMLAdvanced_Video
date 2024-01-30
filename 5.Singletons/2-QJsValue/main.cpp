@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "singletonclass.h"
+// #include "singletonclass.h"
 
 
 int main(int argc, char *argv[])
@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
 
-       qmlRegisterSingletonType("com.blikoon.singletondata",1,0,"MyApi",
-                                SingletonClass::singletonProvider);
+       // qmlRegisterSingletonType("com.blikoon.singletondata",1,0,"MyApi",
+       //                          SingletonClass::singletonProvider);
 
 
         /*
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
        */
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/2-QJsValue/main.qml"_qs);
+    const QUrl url(u"qrc:/com/blikoon/singletondata/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

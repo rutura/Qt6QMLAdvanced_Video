@@ -12,7 +12,7 @@ qt_add_executable(app2-QJsValue
 )
 
 qt_add_qml_module(app2-QJsValue
-    URI 2-QJsValue
+    URI com.blikoon.singletondata
     VERSION 1.0
     QML_FILES main.qml 
 )
