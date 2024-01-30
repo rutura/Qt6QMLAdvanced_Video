@@ -12,7 +12,7 @@ qt_add_executable(app3-QObject
 )
 
 qt_add_qml_module(app3-QObject
-    URI 3-QObject
+    URI com.blikoon1.singletondata1
     VERSION 1.0
     QML_FILES main.qml 
 )
