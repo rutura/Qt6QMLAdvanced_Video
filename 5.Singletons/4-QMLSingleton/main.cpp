@@ -6,11 +6,11 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterSingletonType(QUrl("qrc:/4-QMLSingleton/QmlSingleton.qml"),
-                             "com.blikoon.qmlsingleton",1,0,"QMLSingleton");
+    // qmlRegisterSingletonType(QUrl("qrc:/4-QMLSingleton/QmlSingleton.qml"),
+    //                          "com.blikoon.qmlsingleton",1,0,"QMLSingleton");
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/4-QMLSingleton/main.qml"_qs);
+    const QUrl url(u"qrc:/com/blikoon/qmlsingleton/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

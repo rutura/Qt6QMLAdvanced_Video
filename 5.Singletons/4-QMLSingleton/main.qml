@@ -11,7 +11,7 @@
   */
 
 import QtQuick
-import com.blikoon.qmlsingleton 1.0
+import com.blikoon.qmlsingleton
 
 Window {
     width: 640
@@ -19,7 +19,7 @@ Window {
     visible: true
     title: qsTr("Singleton QML Demo")
 
-       Component.onCompleted: {
-           console.log(QMLSingleton.testProperty)
-       }
+    Component.onCompleted: {
+        console.log(QmlSingleton.testProperty);
+    }
 }
