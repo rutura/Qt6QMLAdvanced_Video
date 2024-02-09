@@ -1,0 +1,38 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+
+Rectangle {
+    height: 90
+    radius: 10
+    color: "gray"
+    border.color: "cyan"
+    width: parent === null ? 480 : parent.width
+    RowLayout {
+        anchors.fill: parent
+        anchors.margins: 20
+        TextField {
+            id: textFieldId
+            text: names
+            Layout.fillWidth: true
+            background: Rectangle {
+                color: "white"
+            }
+        }
+        SpinBox {
+            id: spinBoxId
+            editable: true
+            value: age
+            Layout.fillWidth: true
+            background: Rectangle {
+                color: "white"
+            }
+        }
+        Rectangle {
+            id: rectangleId
+            width: 50
+            height: 50
+            color: favoriteColor
+        }
+    }
+}

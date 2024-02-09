@@ -17,6 +17,13 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("continentModel",continentList);
+    // expose more than 1 model using reference initialization
+    engine.rootContext()->setContextProperties(
+      QList<QQmlContext::PropertyPair>{
+        {"itemList1", QStringList{"List1Item1", "List1Item2", "List1Item3"}},
+        {"itemList2", QStringList{"List2Item1", "List2Item2", "List2Item3"}},
+      }
+      );
     const QUrl url(u"qrc:/2-StringListModel/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
