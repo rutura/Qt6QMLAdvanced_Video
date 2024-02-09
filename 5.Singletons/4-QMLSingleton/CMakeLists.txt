@@ -12,11 +12,17 @@ qt_add_executable(app4-QMLSingleton
 )
 
 qt_add_qml_module(app4-QMLSingleton
-    URI 4-QMLSingleton
+    URI com.blikoon.qmlsingleton
     VERSION 1.0
-    QML_FILES main.qml QmlSingleton.qml
+    QML_FILES main.qml
 )
 
+set_source_files_properties(QmlSingleton.qml PROPERTIES
+    QT_QML_SINGLETON_TYPE TRUE
+)
+qt_target_qml_sources(app4-QMLSingleton
+    QML_FILES QmlSingleton.qml
+)
 set_target_properties(app4-QMLSingleton PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}

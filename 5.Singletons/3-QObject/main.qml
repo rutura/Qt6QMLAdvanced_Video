@@ -14,6 +14,7 @@ Window {
     height: 480
     visible: true
     title: qsTr("Singleton QObject Demo")
+    property var myApi: SingletonClass
 
        Rectangle {
            id : rect1
@@ -27,7 +28,7 @@ Window {
                anchors.centerIn: parent
                color: "white"
                font.pointSize: 30
-               text: MyApi.someProperty
+               text: myApi.someProperty
            }
        }
 
@@ -44,7 +45,7 @@ Window {
                anchors.centerIn: parent
                color: "white"
                font.pointSize: 30
-               text: MyApi.someProperty
+               text: myApi.someProperty
            }
        }
 }

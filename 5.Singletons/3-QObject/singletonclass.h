@@ -10,6 +10,8 @@ class SingletonClass : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int someProperty READ someProperty WRITE setSomeProperty NOTIFY somePropertyChanged)
+    QML_SINGLETON
+    QML_ELEMENT
 public:
     explicit SingletonClass(QObject *parent = nullptr);
 
@@ -17,10 +19,9 @@ public:
 
     void setSomeProperty(int someProperty);
 
-    static QObject *singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+    // static QObject *singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
 
 signals:
-
     void somePropertyChanged(int someProperty);
 
 private :

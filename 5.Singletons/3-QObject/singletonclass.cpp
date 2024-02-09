@@ -27,12 +27,13 @@ void SingletonClass::setSomeProperty(int someProperty)
     emit somePropertyChanged(m_someProperty);
 }
 
-QObject *SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
-{
-    Q_UNUSED(engine)
-    Q_UNUSED(scriptEngine)
 
-    SingletonClass * example = new SingletonClass();
-    return example;
+// QObject *SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
+// {
+//     Q_UNUSED(engine)
+//     Q_UNUSED(scriptEngine)
 
-}
+//     SingletonClass * example = new SingletonClass();
+//     return example;
+
+// }

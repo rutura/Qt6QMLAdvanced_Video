@@ -34,22 +34,23 @@
   */
 
 import QtQuick
-import QtQuick.Controls 2.5
-import com.blikoon.singletondata 1.0
+import QtQuick.Controls
+import com.blikoon.singletondata
 
 Window {
     width: 640
     height: 480
     visible: true
     title: qsTr("Singleton QJSValue Demo")
+    property var myApi: SingletonClass.getJsValue()
 
         Button{
             id : mButton
             text : "Click Me"
             onClicked: {
-                console.log(MyApi.someProperty);
-                //console.log(MyApi.mArray[0])
-                MyApi.mArray.forEach(function(element){
+                console.log(myApi.someProperty);
+                //console.log(myApi.mArray[0])
+                myApi.mArray.forEach(function(element){
                     console.log(element)
                 })
             }
@@ -59,9 +60,9 @@ Window {
             anchors.top: mButton.bottom
             text : "Click Me2"
             onClicked: {
-                console.log(MyApi.someProperty);
-                //console.log(MyApi.mArray[0])
-                MyApi.mArray.forEach(function(element){
+                console.log(myApi.someProperty);
+                //console.log(myApi.mArray[0])
+                myApi.mArray.forEach(function(element){
                     console.log(element)
                 })
             }
