@@ -60,6 +60,6 @@ Window {
         text: "Go Fluid"
         bgColor: "beige"
         textColor: "black"
-        topic: Logo.QTQUICK
+        // topic: Logo.QTQUICK
     }
 }
