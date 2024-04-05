@@ -4,10 +4,12 @@
 #include <QObject>
 #include <QImage>
 #include <QQuickPaintedItem>
+#include <QtQml>
 
 class LearnQtLogo : public QQuickPaintedItem
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QColor bgColor READ bgColor WRITE setBgColor NOTIFY bgColorChanged)
     Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)

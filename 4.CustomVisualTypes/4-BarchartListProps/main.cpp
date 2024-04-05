@@ -1,18 +1,18 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "stair.h"
-#include "stairchart.h"
+//#include "stair.h"
+//#include "stairchart.h"
 
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<StairChart>("com.blikoon.charts",1,0,"StairChart");
-    qmlRegisterType<Stair>("com.blikoon.charts",1,0,"Stair");
+    //qmlRegisterType<StairChart>("com.blikoon.charts",1,0,"StairChart");
+    //qmlRegisterType<Stair>("com.blikoon.charts",1,0,"Stair");
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/4-BarchartListProps/main.qml"_qs);
+    const QUrl url(u"qrc:/BarchartListProps/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

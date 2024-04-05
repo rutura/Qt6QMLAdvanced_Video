@@ -3,11 +3,13 @@
 
 #include <QObject>
 #include <QQuickPaintedItem>
+#include <QtQml>
 #include "stair.h"
 
 class StairChart : public QQuickPaintedItem
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QQmlListProperty<Stair> stairs READ stairs NOTIFY stairsChanged)
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)

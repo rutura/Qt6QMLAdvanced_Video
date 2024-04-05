@@ -3,10 +3,12 @@
 
 #include <QObject>
 #include <QQuickPaintedItem>
+#include <QtQml>
 
 class StairChart : public QQuickPaintedItem
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit StairChart(QQuickItem *parent = nullptr);
     void paint(QPainter * painter);

@@ -3,10 +3,12 @@
 
 #include <QObject>
 #include <QColor>
+#include <QtQml>
 
 class Stair : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged) //Color of the Stair rect fill
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)  //Value of the Stair e.g 143

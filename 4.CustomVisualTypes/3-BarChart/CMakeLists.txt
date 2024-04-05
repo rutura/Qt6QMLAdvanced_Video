@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app3-BarChart
+qt_add_executable(appBarChart
     main.cpp stairchart.h stairchart.cpp
 )
 
-qt_add_qml_module(app3-BarChart
-    URI 3-BarChart
+qt_add_qml_module(appBarChart
+    URI BarChart
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app3-BarChart PROPERTIES
+set_target_properties(appBarChart PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,7 +25,7 @@ set_target_properties(app3-BarChart PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app3-BarChart
+target_compile_definitions(appBarChart
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app3-BarChart
+target_link_libraries(appBarChart
     PRIVATE Qt6::Quick)

@@ -6,7 +6,7 @@
 
 
 import QtQuick
-import com.blikoon.charts 1.0
+//import com.blikoon.charts 1.0
 
 Window {
     width: 640

@@ -38,7 +38,8 @@
   */
 
 import QtQuick
-import com.blikoon.logos
+import PaintingQMLItems
+//import com.blikoon.logos
 
 Window {
     width: 640

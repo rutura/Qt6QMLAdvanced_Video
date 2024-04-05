@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app4-BarchartListProps
+qt_add_executable(appBarchartListProps
     main.cpp stair.h stair.cpp stairchart.h stairchart.cpp
 )
 
-qt_add_qml_module(app4-BarchartListProps
-    URI 4-BarchartListProps
+qt_add_qml_module(appBarchartListProps
+    URI BarchartListProps
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app4-BarchartListProps PROPERTIES
+set_target_properties(appBarchartListProps PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,7 +25,7 @@ set_target_properties(app4-BarchartListProps PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app4-BarchartListProps
+target_compile_definitions(appBarchartListProps
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app4-BarchartListProps
+target_link_libraries(appBarchartListProps
     PRIVATE Qt6::Quick)
