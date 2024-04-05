@@ -1,6 +1,6 @@
 #include <QDebug>
-
 #include "objectlistwrapper.h"
+#include "person.h"
 
 ObjectListWrapper::ObjectListWrapper(QObject *parent) : QObject(parent)
 {
@@ -11,7 +11,7 @@ bool ObjectListWrapper::initialize(QGuiApplication * app)
 {
     resetModel();
 
-    const QUrl url(u"qrc:/5-QPropertyEdits/main.qml"_qs);
+    const QUrl url(u"qrc:/QPropertyEdits/main.qml"_qs);
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated,
                          app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)

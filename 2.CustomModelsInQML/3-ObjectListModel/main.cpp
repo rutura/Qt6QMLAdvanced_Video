@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     //Expose the list
     engine.rootContext()->setContextProperty("personModel",QVariant::fromValue(personList));
 
-    const QUrl url(u"qrc:/3-ObjectListModel/main.qml"_qs);
+    const QUrl url(u"qrc:/ObjectListModel/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

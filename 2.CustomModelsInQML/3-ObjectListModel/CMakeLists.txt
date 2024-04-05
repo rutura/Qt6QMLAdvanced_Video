@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick QuickControls2 REQUIRED)
 
-qt_add_executable(app3-ObjectListModel
+qt_add_executable(appObjectListModel
     main.cpp person.h person.cpp
 )
 
-qt_add_qml_module(app3-ObjectListModel
-    URI 3-ObjectListModel
+qt_add_qml_module(appObjectListModel
+    URI ObjectListModel
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app3-ObjectListModel PROPERTIES
+set_target_properties(appObjectListModel PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,8 +25,8 @@ set_target_properties(app3-ObjectListModel PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app3-ObjectListModel
+target_compile_definitions(appObjectListModel
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app3-ObjectListModel
+target_link_libraries(appObjectListModel
     PRIVATE Qt6::Quick
     PRIVATE Qt6::QuickControls2)

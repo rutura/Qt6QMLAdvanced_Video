@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         {"itemList2", QStringList{"List2Item1", "List2Item2", "List2Item3"}},
       }
       );
-    const QUrl url(u"qrc:/2-StringListModel/main.qml"_qs);
+    const QUrl url(u"qrc:/StringListModel/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

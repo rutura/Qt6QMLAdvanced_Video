@@ -5,7 +5,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QGuiApplication>
-#include "person.h"
 
 class ObjectListWrapper : public QObject
 {

@@ -2,7 +2,7 @@
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-// link person contracts 
+
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +10,10 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QQuickStyle::setStyle("Material");
 
-    // simple object list through a context
+    /**
+     *Setup to expose a moddel as a context property
+     */
+
     // QList<QObject *> personList;
     // personList.append(new Person("John Doe C++","green",32,&engine));
     // personList.append(new Person("Mary Green","blue",23,&engine));
@@ -32,7 +35,7 @@ int main(int argc, char *argv[])
     // //Expose the list
     // engine.rootContext()->setContextProperty("personModel",QVariant::fromValue(personList));
 
-    const QUrl url(u"qrc:/3a-ObjectListModel/main.qml"_qs);
+    const QUrl url(u"qrc:/EditableObjectListModel/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

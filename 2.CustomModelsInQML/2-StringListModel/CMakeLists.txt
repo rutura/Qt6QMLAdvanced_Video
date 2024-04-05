@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app2-StringListModel
+qt_add_executable(appStringListModel
     main.cpp
 )
 
-qt_add_qml_module(app2-StringListModel
-    URI 2-StringListModel
+qt_add_qml_module(appStringListModel
+    URI StringListModel
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app2-StringListModel PROPERTIES
+set_target_properties(appStringListModel PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,7 +25,7 @@ set_target_properties(app2-StringListModel PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app2-StringListModel
+target_compile_definitions(appStringListModel
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app2-StringListModel
+target_link_libraries(appStringListModel
     PRIVATE Qt6::Quick)

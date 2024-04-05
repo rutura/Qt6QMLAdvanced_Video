@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("myDataSource",ds);
 
 
-    const QUrl url(u"qrc:/7-DecouplingDataSource/main.qml"_qs);
+    const QUrl url(u"qrc:/DecouplingDataSource/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

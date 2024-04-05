@@ -1,25 +1,23 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(6a-AbstractListModel VERSION 0.1 LANGUAGES CXX)
+project(11-DecouplingDataSource VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick QuickControls2 REQUIRED)
 
-qt_add_executable(app6a-AbstractListModel
-    main.cpp
+qt_add_executable(appDecouplingDataSource
+    main.cpp person.h person.cpp personmodel.h personmodel.cpp datasource.h datasource.cpp
 )
 
-add_subdirectory(module)
-
-qt_add_qml_module(app6a-AbstractListModel
-    URI 6a-AbstractListModel
+qt_add_qml_module(appDecouplingDataSource
+    URI DecouplingDataSource
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml  InputDialog.qml
 )
 
-set_target_properties(app6a-AbstractListModel PROPERTIES
+set_target_properties(appDecouplingDataSource PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -27,10 +25,8 @@ set_target_properties(app6a-AbstractListModel PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app6a-AbstractListModel
+target_compile_definitions(appDecouplingDataSource
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app6a-AbstractListModel
+target_link_libraries(appDecouplingDataSource
     PRIVATE Qt6::Quick
-    PRIVATE Qt6::QuickControls2
-    PRIVATE myModuleLibplugin
-)
+    PRIVATE Qt6::QuickControls2)

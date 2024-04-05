@@ -1,50 +1,17 @@
 /*
-        . Exploring object list models :
+        This lecture builds on 3a-ObjectListModel by making the provided list editable. This is done with help of signals of the delegate's components.
 
-                . We have a QObject based Person class
-                . We create a list of person objects from C++
-                . Expose the list to QML as a context property :
-                    .     engine.rootContext()->setContextProperty("personModel",
-                                                     QVariant::fromValue(personList));
-
-                . We can now use the model in a ListView in QML :
-                           ListView{
-                                ...
-                               //model : personModel
-                               //model : mModelId
-                               ...
-                           }
-                . We also set up a delegate that read person properties for name,age and favoritecolor
-                    The delegate can read these properties directly because it can get them from the
-                    view's model.
-
-
-                . Show that you can also set up a similar model exclusively from QML :
-                       ListModel{
-                           id : mModelId
-                           ListElement {
-                               names : "Daniel Sten"; favoriteColor : "blue"; age : 10
-                           }
-                           ListElement {
-                               names : "Stevie Wongers"; favoriteColor : "cyan"; age : 23
-                           }
-                           ListElement {
-                               names : "Nicholai Ven"; favoriteColor : "red"; age : 33
-                           }
-                           ListElement {
-                               names : "William Glen"; favoriteColor : "yellowgreen"; age : 45
-                           }
-                       }
-
-
-                  . For simple models, it's better to just have the data in QML right away.
-                    But sometimes the data is exclusively coming from C++ and this is one way
-                    you can feed the data to QML.
-
-
-
-
-
+        __Note__:
+        - To make ```QQmlListProperty<Person>``` property  editable one of its three properties should be enabled. Resource: https://doc.qt.io/qt-6/qqmllistproperty.html#QML_LIST_PROPERTY_ASSIGN_BEHAVIOR_APPEND
+            ```cpp
+                ...
+                QML_LIST_PROPERTY_ASSIGN_BEHAVIOR_APPEND
+                Q_PROPERTY(QQmlListProperty<Person> persons READ getPersons NOTIFY personsChanged)
+                ...
+            ```
+- A signal is important in order to refresh list on changes.
+- ```QQmlListProperty``` translates into a js ```list``` in qml that can can be manipulated normally as an array in js. Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+-
   */
 
 import QtQuick
