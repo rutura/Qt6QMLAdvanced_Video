@@ -1,17 +1,22 @@
 #include <QGuiApplication>
+#include <QQmlContext>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-#include "appwrapper.h"
+
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine;
     QQuickStyle::setStyle("Material");
 
-    AppWrapper wrapper;
-
-    if ( !wrapper.initialize(&app))
-        return -1;
+    const QUrl url(u"qrc:/RestClientChallenge/main.qml"_qs);
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(url);
 
     return app.exec();
 }

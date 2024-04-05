@@ -7,17 +7,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick QuickControls2 REQUIRED)
 
-qt_add_executable(app2-RestClientChallenge
-    main.cpp post.h post.cpp postmodel.h postmodel.cpp datasource.h datasource.cpp appwrapper.h appwrapper.cpp
+qt_add_executable(appRestClientChallenge
+    main.cpp
 )
 
-qt_add_qml_module(app2-RestClientChallenge
-    URI 2-RestClientChallenge
+add_subdirectory(module)
+
+qt_add_qml_module(appRestClientChallenge
+    URI RestClientChallenge
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app2-RestClientChallenge PROPERTIES
+set_target_properties(appRestClientChallenge PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,8 +27,10 @@ set_target_properties(app2-RestClientChallenge PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app2-RestClientChallenge
+target_compile_definitions(appRestClientChallenge
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app2-RestClientChallenge
+target_link_libraries(appRestClientChallenge
     PRIVATE Qt6::Quick
-    PRIVATE Qt6::QuickControls2)
+    PRIVATE Qt6::QuickControls2
+    PRIVATE myModuleLibplugin
+)

@@ -1,22 +1,99 @@
 /*
-        . Challenge Rest client storing the data in a model  :
-            . API endpoint :
-                    const QUrl API_ENDPOINT("https://jsonplaceholder.typicode.com/posts");
+This demonstrates how to use a REST API client to provide data for a list model.
+    - This is just the same project re-organized for better structure.
 
-            . Take ref from Qt 5 explanations
-            . Break this in steps :
-                    . Setting post and datasource classes
-                        . Steal starter code from  RectClientV1 from the
-                            Intermediate course and build from there.
-                    . Setting up the model class
-                    . Feeding to QML
+## REST Api client
+Our client
+```
+https://jsonplaceholder.typicode.com/posts
+```
 
+Testing the client
 
+```bash
+❯ curl "https://jsonplaceholder.typicode.com/posts"
+```
+Sample output
+```json
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "qui est esse",
+    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  },
+  ...
+]
+```
+
+## Model
+
+A model with response properties
+
+```cpp
+class Post : public QObject
+{
+  Q_OBJECT
+  Q_PROPERTY(int userId READ userId WRITE setUserId NOTIFY userIdChanged)
+  Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
+  Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged )
+  Q_PROPERTY(QString body READ body WRITE setBody NOTIFY bodyChanged )
+  QML_ELEMENT
+  ...
+```
+
+## API Handler
+
+An API handler to handle requests, get and store response in a json array
+
+```cpp
+class PostAPI : public QObject
+{
+  Q_OBJECT
+  Q_PROPERTY(QJsonArray jsonArray READ jsonArray CONSTANT)
+  QML_ELEMENT
+  ...
+```
+
+Also expose a method to invoke requests. It can be a ```Q_INVOKABLE```  or a ```public slots:```
+
+## ListModel
+
+A C++ list model that is as a QML element.
+
+```cpp
+class PostModel : public QAbstractListModel
+{
+  Q_OBJECT
+  Q_PROPERTY(PostAPI* postAPI READ postAPI WRITE setPostAPI NOTIFY postAPIChanged)
+  QML_ELEMENT
+
+public:
+  enum Role {
+    UserIdRole = Qt::UserRole + 1,
+    IdRole,
+    TitleRole,
+    BodyRole
+  };
+  ...
+```
+
+Should include a qml-accessible method to get the ```QJsonArray``` from the API handler and build a list of ```QObject```s.
+
+## QML
+
+Create objects in qml and call them
   */
-
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import myModule
 
 Window {
     id : root
@@ -25,34 +102,21 @@ Window {
     visible: true
     title: qsTr("Rest Client V2")
 
+    PostAPI {
+        id: postApiId;
+    }
+
     ColumnLayout{
         anchors.fill: parent
         spacing: 0
 
         ListView{
             id : mListView
-            model : myModel
-            delegate: Rectangle{
-
-                width : root.width
-                height: textId.implicitHeight+30
-                color: "beige"
-                border.color: "yellowgreen"
-                radius: 5
-
-                Text {
-                    width : parent.width
-                    height: parent.height
-                    id : textId
-                    anchors.centerIn: parent
-                    text : post // The role we exposed in C++
-                    //text : modelData // Can also use  this
-                    font.pointSize: 13
-                    wrapMode: Text.WordWrap
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                }
+            model: PostModel {
+                id: postModelId
+                postAPI: postApiId
             }
+            delegate: PostDelegate{}
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
@@ -61,10 +125,10 @@ Window {
 
         Button {
             id : mButton1
-            text : "Fetch"
+            text : "Refresh"
             Layout.fillWidth: true
             onClicked: {
-                myDatasource.fetchPosts()
+                postModelId.refresh()
             }
 
         }
@@ -73,12 +137,14 @@ Window {
             text : "RemoveLast"
             Layout.fillWidth: true
             onClicked: {
-                myDatasource.removeLastPost()
-
+                postModelId.removeLast()
             }
 
         }
     }
 
+    Component.onCompleted: {
+        postApiId.fetchPosts()
+    }
 
 }
