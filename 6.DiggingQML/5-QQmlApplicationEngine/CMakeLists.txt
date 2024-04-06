@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app5-QQmlApplicationEngine
+qt_add_executable(appQQmlApplicationEngine
     main.cpp
 )
 
-qt_add_qml_module(app5-QQmlApplicationEngine
-    URI 5-QQmlApplicationEngine
+qt_add_qml_module(appQQmlApplicationEngine
+    URI QQmlApplicationEngine
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app5-QQmlApplicationEngine PROPERTIES
+set_target_properties(appQQmlApplicationEngine PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,7 +25,7 @@ set_target_properties(app5-QQmlApplicationEngine PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app5-QQmlApplicationEngine
+target_compile_definitions(appQQmlApplicationEngine
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app5-QQmlApplicationEngine
+target_link_libraries(appQQmlApplicationEngine
     PRIVATE Qt6::Quick)

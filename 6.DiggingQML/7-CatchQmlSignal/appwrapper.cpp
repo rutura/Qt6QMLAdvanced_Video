@@ -8,7 +8,7 @@ AppWrapper::AppWrapper(QObject *parent)
 
 bool AppWrapper::initialize()
 {
-    const QUrl url(u"qrc:/7-CatchQmlSignal/main.qml"_qs);
+    const QUrl url(u"qrc:/CatchQmlSignal/main.qml"_qs);
     mEngine.load(url);
 
     if (mEngine.rootObjects().isEmpty())
