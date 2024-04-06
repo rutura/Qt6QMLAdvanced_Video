@@ -4,6 +4,10 @@
 
         . Good for data that changes frequently
 
+        . Erick changes:
+            ## Changes
+                - refactored the approach to singleton design/singleton components.
+
   */
 
 import QtQuick

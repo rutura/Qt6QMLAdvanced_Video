@@ -7,11 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app4-QMLSingleton
+qt_add_executable(appQMLSingleton
     main.cpp
 )
 
-qt_add_qml_module(app4-QMLSingleton
+qt_add_qml_module(appQMLSingleton
     URI com.blikoon.qmlsingleton
     VERSION 1.0
     QML_FILES main.qml
@@ -20,10 +20,10 @@ qt_add_qml_module(app4-QMLSingleton
 set_source_files_properties(QmlSingleton.qml PROPERTIES
     QT_QML_SINGLETON_TYPE TRUE
 )
-qt_target_qml_sources(app4-QMLSingleton
+qt_target_qml_sources(appQMLSingleton
     QML_FILES QmlSingleton.qml
 )
-set_target_properties(app4-QMLSingleton PROPERTIES
+set_target_properties(appQMLSingleton PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -31,7 +31,7 @@ set_target_properties(app4-QMLSingleton PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app4-QMLSingleton
+target_compile_definitions(appQMLSingleton
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app4-QMLSingleton
+target_link_libraries(appQMLSingleton
     PRIVATE Qt6::Quick)

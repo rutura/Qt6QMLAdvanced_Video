@@ -7,17 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(app2-QJsValue
+qt_add_executable(appQJsValue
     main.cpp singletonclass.h singletonclass.cpp
 )
 
-qt_add_qml_module(app2-QJsValue
+qt_add_qml_module(appQJsValue
     URI com.blikoon.singletondata
     VERSION 1.0
     QML_FILES main.qml 
 )
 
-set_target_properties(app2-QJsValue PROPERTIES
+set_target_properties(appQJsValue PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -25,7 +25,7 @@ set_target_properties(app2-QJsValue PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(app2-QJsValue
+target_compile_definitions(appQJsValue
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(app2-QJsValue
+target_link_libraries(appQJsValue
     PRIVATE Qt6::Quick)
