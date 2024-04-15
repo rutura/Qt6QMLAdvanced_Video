@@ -61,8 +61,8 @@ Window {
        ListView{
            id : mListView
            anchors.fill: parent
-           model : personModel
-           //model : modelId
+           //model : personModel
+           model : modelId
            delegate: Rectangle {
                height: 90
                radius: 10

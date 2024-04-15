@@ -13,6 +13,7 @@ class Person : public QObject
 public:
     explicit Person(QObject *parent = nullptr);
     Person(const QString &names, const QString &favoritecolor,const int &age , QObject * parent = nullptr);
+
     QString names() const;
     QString favoriteColor() const;
     int age() const;
