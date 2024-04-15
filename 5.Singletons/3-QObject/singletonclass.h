@@ -19,7 +19,7 @@ public:
 
     void setSomeProperty(int someProperty);
 
-    // static QObject *singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+    static QObject *singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
 
 signals:
     void somePropertyChanged(int someProperty);

@@ -7,9 +7,9 @@ SingletonClass::SingletonClass(QObject *parent) : QObject(parent),
 {
     qDebug() << "Singleton instance created";
     connect(m_timer,&QTimer::timeout,[=](){
-        setSomeProperty(m_someProperty+3);
+        setSomeProperty(m_someProperty+2);
     });
-    m_timer->start(2000);
+    m_timer->start(1000);
 
 }
 
@@ -28,12 +28,12 @@ void SingletonClass::setSomeProperty(int someProperty)
 }
 
 
-// QObject *SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
-// {
-//     Q_UNUSED(engine)
-//     Q_UNUSED(scriptEngine)
+QObject *SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
 
-//     SingletonClass * example = new SingletonClass();
-//     return example;
+    SingletonClass * example = new SingletonClass();
+    return example;
 
-// }
+}

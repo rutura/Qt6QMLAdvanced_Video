@@ -13,8 +13,8 @@ class SingletonClass : public QObject
 public:
     explicit SingletonClass(QObject *parent = nullptr);
 
-    // static QJSValue singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
-    Q_INVOKABLE QJSValue getJsValue();
+    //static QJSValue singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+    //Q_INVOKABLE QJSValue getJsValue();
 };
 
 #endif // SINGLETONCLASS_H

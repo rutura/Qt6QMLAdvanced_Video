@@ -6,8 +6,6 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    // qmlRegisterSingletonType(QUrl("qrc:/4-QMLSingleton/QmlSingleton.qml"),
-    //                          "com.blikoon.qmlsingleton",1,0,"QMLSingleton");
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/com/blikoon/qmlsingleton/main.qml"_qs);
