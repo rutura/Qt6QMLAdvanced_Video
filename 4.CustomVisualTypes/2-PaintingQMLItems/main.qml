@@ -14,7 +14,11 @@
                 Q_PROPERTY(QtTopic topic READ topic WRITE setTopic NOTIFY topicChanged)
 
          . We register the type to QML :
-                qmlRegisterType<LearnQtLogo>("com.blikoon.logos",1,0,"Logo");
+                . qmlRegisterType<LearnQtLogo>("com.blikoon.logos",1,0,"Logo");
+                . Using QML_ELEMENT causes a problem worth investing in more, but I'll stick to qmlRegisterType in this example.
+                . QML_ELEMENT works for the bar chart example that follows and it uses the same technique here, so it may be
+                    a problem with the structure of the project here. Don't dwell on this too much.
+
 
          . And use the type in QML :
                 Logo{
@@ -38,8 +42,7 @@
   */
 
 import QtQuick
-import PaintingQMLItems
-//import com.blikoon.logos
+import com.blikoon.logos
 
 Window {
     width: 640
@@ -61,6 +64,6 @@ Window {
         text: "Go Fluid"
         bgColor: "beige"
         textColor: "black"
-        // topic: Logo.QTQUICK
+        topic: Logo.QTQUICK
     }
 }

@@ -15,7 +15,7 @@ qt_add_executable(appPaintingQMLItems
 qt_add_qml_module(appPaintingQMLItems
     URI PaintingQMLItems
     VERSION 1.0
-    QML_FILES main.qml
+    QML_FILES main.qml 
     SOURCES learnqtlogo.h learnqtlogo.cpp
 )
 

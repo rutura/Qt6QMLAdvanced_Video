@@ -4,8 +4,8 @@
 LearnQtLogo::LearnQtLogo(QQuickItem *parent) : QQuickPaintedItem(parent),
   m_bgColor(Qt::white),
   m_textColor(Qt::blue),
-  m_text("Learn GUI")
-  // m_topic(QTCPP)
+  m_text("Learn GUI"),
+  m_topic(QTCPP)
 {
     setWidth(128);
     setHeight(128);
@@ -14,10 +14,10 @@ LearnQtLogo::LearnQtLogo(QQuickItem *parent) : QQuickPaintedItem(parent),
 void LearnQtLogo::paint(QPainter *painter)
 {
     //Draw the image
-    QString imagePath = "://images/LearnQt.png";
-    // if( m_topic == QTQUICK){
-    //     imagePath = "://images/LearnQt.png";
-    // }
+    QString imagePath = ":/images/LearnQt.png";
+    if( m_topic == QTQUICK){
+        imagePath = ":/images/LearnQtQuick.png";
+    }
     QImage mImage(imagePath);
     QImage scaledImage = mImage.scaled(width() , height());
     QRect mRect(mImage.rect());
@@ -53,10 +53,10 @@ QString LearnQtLogo::text() const
     return m_text;
 }
 
-// LearnQtLogo::QtTopic LearnQtLogo::topic() const
-// {
-//     return m_topic;
-// }
+LearnQtLogo::QtTopic LearnQtLogo::topic() const
+{
+    return m_topic;
+}
 
 void LearnQtLogo::setBgColor(QColor bgColor)
 {
@@ -85,11 +85,11 @@ void LearnQtLogo::setText(QString text)
     emit textChanged(m_text);
 }
 
-// void LearnQtLogo::setTopic(LearnQtLogo::QtTopic topic)
-// {
-//     if (m_topic == topic)
-//         return;
+void LearnQtLogo::setTopic(LearnQtLogo::QtTopic topic)
+{
+    if (m_topic == topic)
+        return;
 
-//     m_topic = topic;
-//     emit topicChanged(m_topic);
-// }
+    m_topic = topic;
+    emit topicChanged(m_topic);
+}

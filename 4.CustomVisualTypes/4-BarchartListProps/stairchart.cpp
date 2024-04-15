@@ -84,29 +84,6 @@ void StairChart::paint(QPainter *painter)
 
     }
 
-    /*
-    //Draw the border
-    QPen mPen;
-    mPen.setColor(Qt::red);
-    mPen.setWidth(4);
-
-    painter->setPen(mPen);
-    painter->drawRect(mRect);
-
-    //Draw bars
-    painter->setBrush(QBrush(Qt::yellow));
-    painter->setPen(Qt::yellow);
-
-    //Draw first bar
-    drawStair(painter, mRect , Qt::red,200,50);
-    drawStair(painter, mRect , Qt::blue,120,100);
-
-    drawStair(painter, mRect , Qt::yellow,300,150);
-    drawStair(painter, mRect , Qt::black,50,200);
-    drawStair(painter, mRect , Qt::green,350,250);
-    drawStair(painter, mRect , Qt::blue,100,300);
-    */
-
     //Draw scale
     //QPen mPen;
     painter->setFont(QFont("Consolas", 10));

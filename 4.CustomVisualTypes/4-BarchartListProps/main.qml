@@ -7,6 +7,7 @@
 
 import QtQuick
 //import com.blikoon.charts
+import BarchartListProps
 
 Window {
     width: 640
