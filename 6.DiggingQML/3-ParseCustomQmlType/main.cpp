@@ -32,17 +32,15 @@ int main(int argc, char *argv[])
     QQmlEngine engine;
     QQmlComponent component(&engine, QUrl("qrc:/qml/main.qml"));
 
-    FootBallTeam * team = qobject_cast<FootBallTeam* > (component.create());
+    FootBallTeam * team = qobject_cast<FootBallTeam* > (component.create()); // FootBallTeam is the root element in the QML file
 
     if(team && team->captain()){
         qDebug() << "Team : " << team->title() << " , captain is : " << team->captain()->name();
         qDebug() << "The players are : ";
 
-        for ( int ix = 0; ix < team->playerCountCustom() ; ix++){
-            qDebug() << " " << team->playerCustom(ix)->name();
+        for ( int i = 0; i < team->playerCountCustom() ; i++){
+            qDebug() << " " << team->playerCustom(i)->name();
         }
-
     }
-
     return a.exec();
 }

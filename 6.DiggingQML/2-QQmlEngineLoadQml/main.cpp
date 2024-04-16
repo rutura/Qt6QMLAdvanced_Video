@@ -44,6 +44,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
     QQmlEngine engine;
     QQmlComponent component(&engine,"qrc:/qml/main.qml");
     QObject * rootObject = component.create();
@@ -54,9 +55,14 @@ int main(int argc, char *argv[])
 
     //Read Child1
     QObject * child1 = rootObject->findChild<QObject * > ("Child1");
+
+
     if( child1){
-        qDebug() << "Age is : " << QQmlProperty::read(child1,"age").toInt();
-        qDebug() << "Age is : " << child1->property("age").toInt();
+        qDebug() << "Age is : " << 			QQmlProperty::read(child1,"age").toInt();	// Syntax #1
+        qDebug() << "Age is : " << 			child1->property("age").toInt();				// Syntax #2
+
+
+
         qDebug() << "Names : " << child1->property("names").toString();
     }else {
         qDebug() << "Could not get object with object name Child1";
@@ -84,8 +90,9 @@ int main(int argc, char *argv[])
     }
 
     //Find children
-
     QList<QObject * > children = rootObject->findChildren<QObject *> ("Child2");
+
+
     if( children.count()> 0){
         qDebug() << "Got some children, printing their cars :";
         foreach (QObject * object, children) {
