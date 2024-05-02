@@ -1,25 +1,16 @@
-/*
-
-        . Exposing simple stringLists as models from C++ for use in QML
-        . Use the docs and the Qt5 course as reference.
-
-
-  */
-
 import QtQuick
 
 Window {
-    id: rootId
     width: 640
     height: 480
     visible: true
-    title: qsTr("StringList Model Demo")
+    title: qsTr("StringListModel")
 
     ListView{
         id : mListViewId
         anchors.fill: parent
 
-        //model: continentModel
+       // model: continentModel
         //model: itemList1
         model: itemList2
         delegate: Rectangle {

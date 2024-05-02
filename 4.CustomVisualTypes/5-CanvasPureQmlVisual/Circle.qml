@@ -1,25 +1,27 @@
-import QtQuick 2.12
+import QtQuick
 
 Item {
     Canvas{
-        id : root
-        width:  300
-        height:  300
+        id: root
+        width: 300
+        height: 300
 
-        onPaint: {
+        onPaint: function(){
             //Do the drawing
             var context = getContext("2d");
             context.reset();
 
-            var centerX = width/2;
-            var centerY = height/2;
+            //Move the pin of the pen to the center
+            var centerX = width/2
+            var centerY = height/2
 
-            context.beginPath();
+            //Draw the path
+            context.beginPath()
             context.fillStyle = "yellowgreen"
-            context.moveTo( centerX,centerY);
-            context.arc(centerX, centerY, width / 2, 0, Math.PI * 1.5, false);
-            context.lineTo(centerX,centerY);
-            context.fill();
+            context.moveTo(centerX,centerY)
+            context.arc(centerX,centerY,width/2,0,Math.PI * 1.5,false)
+            context.lineTo(centerX,centerY)
+            context.fill()
 
             context.beginPath();
             context.fillStyle = "red";
@@ -28,7 +30,6 @@ Item {
             context.lineTo(centerX, centerY);
             context.fill();
         }
-
     }
 
 }

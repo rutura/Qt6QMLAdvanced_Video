@@ -1,25 +1,10 @@
-/*
- *      . This example shows that we can even parse a custom qml type
- *      . We use the footbal team we built earlier in the course as
- *          a use case.
- *      . To set up this project, we start with a console app
- *      . add the modules (Core,Gui,Qml) in the CMakeLists.txt file
- *      . and store our main.qml file in the rousource file named qml.qrc
- *      . the actual main.qml file lives in a folder named qml on the file
- *          system.
- *
- *      . Use the Qt5 course as a reference and improvise.
- *
- * */
-
-
 #include <QCoreApplication>
 #include <QQmlEngine>
 #include <QQmlComponent>
 #include <QQmlProperty>
 #include <QDebug>
-#include <player.h>
-#include <footballteam.h>
+#include "player.h"
+#include "footballteam.h"
 
 int main(int argc, char *argv[])
 {
@@ -42,5 +27,6 @@ int main(int argc, char *argv[])
             qDebug() << " " << team->playerCustom(i)->name();
         }
     }
+
     return a.exec();
 }

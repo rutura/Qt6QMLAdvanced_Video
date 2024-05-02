@@ -11,7 +11,7 @@ bool ObjectListWrapper::initialize(QGuiApplication * app)
 {
     resetModel();
 
-    const QUrl url(u"qrc:/QPropertyEdits/main.qml"_qs);
+    const QUrl url(u"qrc:/QPropertyEdits/Main.qml"_qs);
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated,
                          app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)
@@ -100,7 +100,7 @@ void ObjectListWrapper::populateModelWithData()
 void ObjectListWrapper::resetModel()
 {
     mEngine.rootContext()->setContextProperty("Wrapper",this);
-    mEngine.rootContext()->setContextProperty("myModel",QVariant::fromValue(persons()));
+    //mEngine.rootContext()->setContextProperty("myModel",QVariant::fromValue(persons()));
 
 }
 

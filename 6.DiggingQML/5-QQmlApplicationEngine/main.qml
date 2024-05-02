@@ -1,26 +1,12 @@
-/*
-        . Shoing the flow when one is working on a regular Qt Quick Project
-        . Same things we've been doing with QQmlEngine apply.
-        . The only diff is that now we're basing our work on QQmlApplicationEngine.
-            How does it differ from QQmlEngine? I invite you to look that up in the docs.
-            May be set that up as an exercise.
-
-        . Use the Qt5 course as a reference and improvise.
-
-
-  */
-
-
 import QtQuick
-import QtQuick.Window
 import QtQuick.Controls
 
 Window {
     objectName: "rootWindow"
-    visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    visible: true
+    title: qsTr("QQmlApplicationEngine")
 
     Rectangle {
         id : rect1
@@ -75,4 +61,3 @@ Window {
         }
     }
 }
-

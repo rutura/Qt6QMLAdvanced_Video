@@ -14,9 +14,10 @@ class LearnQtLogo : public QQuickPaintedItem
     Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
     Q_PROPERTY(QtTopic topic READ topic WRITE setTopic NOTIFY topicChanged)
+
 public:
     explicit LearnQtLogo(QQuickItem *parent = nullptr);
-    void paint(QPainter *painter);
+
 
     enum QtTopic{
         QTCPP,
@@ -24,22 +25,31 @@ public:
     };
     Q_ENUM(QtTopic)
 
-    QColor bgColor() const;
-    QColor textColor() const;
-    QString text() const;
-    QtTopic topic() const;
-    void setBgColor(QColor bgColor);
-    void setTextColor(QColor textColor);
-    void setText(QString text);
-    void setTopic(QtTopic topic);
-
 signals:
-    void bgColorChanged(QColor bgColor);
-    void textColorChanged(QColor textColor);
-    void textChanged(QString text);
-    void topicChanged(QtTopic topic);
 
-private :
+    // QQuickPaintedItem interface
+    void bgColorChanged();
+
+    void textColorChanged();
+
+    void textChanged();
+
+    void topicChanged();
+
+public:
+    void paint(QPainter *painter);
+    QColor bgColor() const;
+    void setBgColor(const QColor &newBgColor);
+    QColor textColor() const;
+    void setTextColor(const QColor &newTextColor);
+
+    QString text() const;
+    void setText(const QString &newText);
+
+    QtTopic topic() const;
+    void setTopic(const QtTopic &newTopic);
+
+private:
     QColor m_bgColor;
     QColor m_textColor;
     QString m_text;

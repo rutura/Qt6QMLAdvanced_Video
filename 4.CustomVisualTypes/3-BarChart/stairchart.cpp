@@ -1,17 +1,49 @@
-
 #include <QPainter>
-#include <QPen>
 #include <QBrush>
+#include <QPen>
 #include "stairchart.h"
 
-StairChart::StairChart(QQuickItem *parent) : QQuickPaintedItem(parent)
+StairChart::StairChart(QQuickItem *parent)
+    : QQuickPaintedItem{parent}
 {
     setWidth(400);
     setHeight(400);
 }
 
-void StairChart::drawStair(QPainter *painter, QRect mRect,
-                           QColor mColor, qreal barValue,int startingPoint)
+void StairChart::paint(QPainter *painter)
+{
+    QRect mRect(0,0,width(),height());
+
+    //Draw Title
+    painter->drawText(mRect.topLeft()+QPoint(30,30),
+                      "Carbon Emmissions by 2030 In M of tons");
+
+    //Draw the border
+    QPen mPen;
+    mPen.setColor(Qt::red);
+    mPen.setWidth(4);
+
+    painter->setPen(mPen);
+    painter->drawRect(mRect);
+
+    //Draw the stairs
+    painter->setBrush(QBrush(Qt::yellow));
+    painter->setPen(Qt::yellow);
+
+    //Draw the bars
+    drawStair(painter,mRect,Qt::red,200,50);
+    drawStair(painter,mRect,Qt::blue,120,100);
+    drawStair(painter, mRect , Qt::yellow,300,150);
+    drawStair(painter, mRect , Qt::black,50,200);
+    drawStair(painter, mRect , Qt::green,350,250);
+    drawStair(painter, mRect , Qt::blue,100,300);
+
+    //Draw the scale
+    drawScale(painter,mRect);
+
+}
+
+void StairChart::drawStair(QPainter *painter, QRect mRect, QColor mColor, qreal barValue, int startingPoint)
 {
     painter->setPen(mColor);
     painter->setBrush(QBrush(mColor));
@@ -20,6 +52,7 @@ void StairChart::drawStair(QPainter *painter, QRect mRect,
                       mRect.bottomLeft().y()-barValue,
                       50,
                       barValue);
+
 }
 
 void StairChart::drawScale(QPainter *painter, QRect mRect)
@@ -40,38 +73,5 @@ void StairChart::drawScale(QPainter *painter, QRect mRect)
 
     painter->drawLine(mRect.bottomLeft()+QPoint(0,-300),mRect.bottomLeft()+QPoint(20,-300));
     painter->drawText(mRect.bottomLeft()+QPoint(3,-310),"300");
-}
 
-void StairChart::paint(QPainter *painter)
-{
-    QRect mRect(0,0,width(),height());
-
-    //Draw Title
-    painter->drawText(mRect.topLeft()+QPoint(30,30),
-                      "Carbon Emmissions by 2030 In M of tons");
-
-    //Draw the border
-    QPen mPen;
-    mPen.setColor(Qt::red);
-    mPen.setWidth(4);
-
-    painter->setPen(mPen);
-    painter->drawRect(mRect);
-
-    //Draw bars
-    painter->setBrush(QBrush(Qt::yellow));
-    painter->setPen(Qt::yellow);
-
-    //Draw first bar
-    drawStair(painter, mRect , Qt::red,200,50);
-    drawStair(painter, mRect , Qt::blue,120,100);
-
-    drawStair(painter, mRect , Qt::yellow,300,150);
-    drawStair(painter, mRect , Qt::black,50,200);
-    drawStair(painter, mRect , Qt::green,350,250);
-    drawStair(painter, mRect , Qt::blue,100,300);
-
-    //Draw scale
-    //QPen mPen;
-    drawScale(painter, mRect);
 }

@@ -3,7 +3,6 @@
 #include <QQuickStyle>
 #include "objectlistwrapper.h"
 
-
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -11,8 +10,9 @@ int main(int argc, char *argv[])
 
     ObjectListWrapper wrapper;
 
-    if(!wrapper.initialize(&app))
+    if(!wrapper.initialize(&app)){
         return -1;
+    }
 
     return app.exec();
 }

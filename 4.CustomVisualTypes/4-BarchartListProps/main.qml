@@ -1,10 +1,3 @@
-/*
-
-        . Enabling list properties for our StairChart type
-        . Use the Qt5 course as a reference and improvise.
-
-  */
-
 import QtQuick
 //import com.blikoon.charts
 import BarchartListProps
@@ -20,6 +13,7 @@ Window {
         bgColor: "lightgray"
 
         //This syntax is just a syntactic sugar.
+        /*
         Stair{
             from: 50
             value: 250
@@ -38,8 +32,8 @@ Window {
             color: "red"
             text: "VT"
         }
+        */
 
-        /*
         stairs: [
             Stair{
                 from: 50
@@ -91,6 +85,5 @@ Window {
             }
 
         ]
-        */
     }
 }

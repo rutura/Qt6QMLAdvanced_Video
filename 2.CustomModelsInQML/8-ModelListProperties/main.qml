@@ -1,18 +1,7 @@
-/*
-
-        . Refactoring the code to use :
-            . object list
-            . default properties
-
-        . Use the Qt 5 course as a reference and improvise.
-
-  */
-
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
-//import com.blikoon.models
 import ModelListProperties
 
 Window {
@@ -25,7 +14,8 @@ Window {
     title: qsTr("Hello World")
 
     PersonModel{
-        id : mModeId
+        id : modelId
+        /*
         Person{
             names: "Steve Barker"
             favoriteColor: "blue"
@@ -41,8 +31,8 @@ Window {
             favoriteColor: "green"
             age : 23
         }
+        */
 
-        /*
         persons: [
 
             Person{
@@ -62,7 +52,6 @@ Window {
             }
 
         ]
-        */
     }
 
 
@@ -73,7 +62,7 @@ Window {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            model : mModeId
+            model : modelId
             delegate: Rectangle {
                 height: 90
                 radius: 10
@@ -157,7 +146,7 @@ Window {
                     onInputDialogAccepted: {
                         console.log("Here in main, dialog accepted");
                         console.log( " names : " + personNames + " age :" + personAge)
-                        mModeId.addPerson(personNames,"yellowgreen",personAge)
+                        modelId.addPerson(personNames,"yellowgreen",personAge)
                     }
                 }
 
@@ -168,7 +157,7 @@ Window {
                 height: 50
                 text : "Remove Last";
                 onClicked: {
-                    mModeId.removeLastItem()
+                    modelId.removeLastItem()
                 }
             }
         }

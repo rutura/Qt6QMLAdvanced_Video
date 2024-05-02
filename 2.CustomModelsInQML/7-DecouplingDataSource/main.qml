@@ -1,17 +1,3 @@
-/*
-        . Decoupling the actual data storage from the model API
-        . We set up a separate class for data storage and expose
-            its object as a model member
-
-         . The model now provides a clean api for the view to see the data
-            trough,
-         . All data manipulations will happend through the data source.
-         . Reference the Slides from the Qt 5 course and improvise.
-
-
-  */
-
-
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -19,32 +5,27 @@ import QtQuick.Dialogs
 import DecouplingDataSource
 
 Window {
-    id : root
+    id: root
     width: 640
     height: 480
     visible: true
-    minimumWidth: 400
-    minimumHeight: 600
-    title: qsTr("External Data Source")
-
+    title: qsTr("Abstract List Model")
 
     ColumnLayout{
         anchors.fill: parent
-
         PersonModel{
-            id: myModel
+            id: modelId
         }
 
         ListView{
             id : mListView
             Layout.fillWidth: true
             Layout.fillHeight: true
-
-            model : myModel
+            model : modelId
             delegate: Rectangle {
                 height: 90
                 radius: 10
-                color : "gray"// Can also do modelData.favoriteColor directly but adding model makes it clear where the data is coming from. More readable
+                color : "gray"
                 border.color: "cyan"
                 width: root.width
                 RowLayout{
@@ -54,7 +35,7 @@ Window {
                     TextField{
                         text : names
                         Layout.fillWidth: true
-                        background : Rectangle{
+                        background: Rectangle{
                             color : "white"
                         }
 
@@ -77,13 +58,13 @@ Window {
                             model.age = value;
                         }
                         Component.onCompleted: {
-                            mSpinbox.value = model.age
+                            mSpinbox.value = age
                         }
                     }
                     Rectangle{
                         width : 50
                         height: 50
-                        color: model.favoriteColor
+                        color: favoriteColor
                         MouseArea{
                             anchors.fill: parent
                             ColorDialog{
@@ -109,9 +90,9 @@ Window {
             }
         }
 
+
         RowLayout{
             width : parent.width
-
             Button{
                 Layout.fillWidth: true
                 height: 50
@@ -124,11 +105,9 @@ Window {
                     onInputDialogAccepted: {
                         console.log("Here in main, dialog accepted");
                         console.log( " names : " + personNames + " age :" + personAge)
-                        //myDataSource.addPerson(personNames,personAge)
-                        myModel.addPerson(personNames,"yellowgreen",personAge)
+                        modelId.addPerson(personNames,personAge,"yellowgreen")
                     }
                 }
-
 
             }
             Button{
@@ -136,10 +115,9 @@ Window {
                 height: 50
                 text : "Remove Last";
                 onClicked: {
-                    myModel.removeLastItem()
+                    modelId.removeLastItem()
                 }
             }
         }
     }
-
 }

@@ -10,8 +10,10 @@ int main(int argc, char *argv[])
 
     AppWrapper wrapper;
 
-    if ( !wrapper.initialize(&app))
+    if(!wrapper.initialize(&app)){
         return -1;
+    }
+
 
     return app.exec();
 }

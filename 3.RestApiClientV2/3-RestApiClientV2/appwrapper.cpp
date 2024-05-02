@@ -18,7 +18,7 @@ bool AppWrapper::initialize(QGuiApplication * app)
     mEngine.rootContext()->setContextProperty("myDatasource",ds);
 
 
-    const QUrl url(u"qrc:/RestClientChallenge/main.qml"_qs);
+    const QUrl url(u"qrc:/RestApiClientV2/Main.qml"_qs);
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated,
                         app, [url](QObject *obj, const QUrl &objUrl) {
            if (!obj && url == objUrl)

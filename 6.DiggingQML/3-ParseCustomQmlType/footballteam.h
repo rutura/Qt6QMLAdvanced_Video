@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QVector>
 #include <QQmlListProperty>
-#include <player.h>
+#include "player.h"
 
 class FootBallTeam : public QObject
 {

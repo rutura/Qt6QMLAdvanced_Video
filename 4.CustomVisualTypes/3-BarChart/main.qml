@@ -1,12 +1,5 @@
-/*
-        . Using QQuickPaintedItem to paint a Barchart QML Item
-        . Improvise in the slides and recording.
-
-  */
-
-
 import QtQuick
-//import com.blikoon.charts 1.0
+import BarChart
 
 Window {
     width: 640

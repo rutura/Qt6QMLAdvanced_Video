@@ -1,13 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Window
+import QtQuick
 import QtQuick.Controls
 
 Window {
-    visible: true
+    objectName: "ROOT OBJECT"
     width: 640
     height: 480
-    objectName: "ROOT OBJECT"
-    title: qsTr("Hello World")
+    visible: true
+    title: qsTr("Catch QML Signal")
 
     signal qmlSignal(string value,variant mVar);
 

@@ -4,7 +4,6 @@ SingletonClass::SingletonClass(QObject *parent) : QObject(parent)
 {
 }
 
-/*
 QJSValue SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(scriptEngine);
@@ -23,7 +22,6 @@ QJSValue SingletonClass::singletonProvider(QQmlEngine *engine, QJSEngine *script
 
     return jsValue;
 }
-*/
 
 /*
 QJSValue SingletonClass::getJsValue()
@@ -46,3 +44,4 @@ QJSValue SingletonClass::getJsValue()
   return jsValue;
 }
 */
+

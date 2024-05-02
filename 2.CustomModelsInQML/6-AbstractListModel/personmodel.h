@@ -1,9 +1,9 @@
 #ifndef PERSONMODEL_H
 #define PERSONMODEL_H
 
-#include <QAbstractListModel>
 #include <QObject>
-#include <QtQml>
+#include <QQmlEngine>
+#include <QAbstractListModel>
 #include "person.h"
 
 class PersonModel : public QAbstractListModel
@@ -15,24 +15,29 @@ class PersonModel : public QAbstractListModel
         FavoriteColorRole,
         AgeRole
     };
+
 public:
     explicit PersonModel(QObject *parent = nullptr);
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    QVariant data(const QModelIndex &index, int role) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role);
-    Qt::ItemFlags flags(const QModelIndex& index) const;
-    QHash<int, QByteArray> roleNames() const;
 
-    void addPerson( Person *person);
+signals:
+
+    // QAbstractItemModel interface
+public:
+    int rowCount(const QModelIndex &parent) const;
+    QVariant data(const QModelIndex &index, int role) const;
+    QHash<int, QByteArray> roleNames() const;
+    Qt::ItemFlags flags(const QModelIndex &index) const;
+    bool setData(const QModelIndex &index, const QVariant &value, int role);
+
+
+    //Helper function
+    Q_INVOKABLE void addPerson(Person* person);
     Q_INVOKABLE void addPerson();
     Q_INVOKABLE void addPerson(const QString & names,const int & age);
     Q_INVOKABLE void removePerson(int index);
     Q_INVOKABLE void removeLastPerson();
 
-signals:
-
-public slots:
-private :
+private:
     QList<Person*> mPersons;
 };
 

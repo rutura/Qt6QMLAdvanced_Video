@@ -1,29 +1,23 @@
-/*
- *  Showing how to call a qml function nested down in the tree structure.
- *      Now we can do this because we can parse qml from C++ and find the
- *      item containing our js function.
- *
- * */
-
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/InvokeQmlMethod/main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    const QUrl url(u"qrc:/InvokeQmlMethod/Main.qml"_qs);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
     engine.load(url);
 
-    if (engine.rootObjects().isEmpty())
+    if(engine.rootObjects().empty()){
         return -1;
+    }
 
     QObject * rootObject = engine.rootObjects()[0];
 

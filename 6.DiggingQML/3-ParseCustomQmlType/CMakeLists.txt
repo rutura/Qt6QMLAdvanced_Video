@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.14)
 
 project(3-ParseCustomQmlType LANGUAGES CXX)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -15,8 +13,13 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Qml)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Qml)
 
 add_executable(3-ParseCustomQmlType
-  main.cpp qml.qrc player.h player.cpp footballteam.h footballteam.cpp
+  main.cpp player.h player.cpp footballteam.h footballteam.cpp
+  qml.qrc
 )
-target_link_libraries(3-ParseCustomQmlType Qt${QT_VERSION_MAJOR}::Core
-    Qt${QT_VERSION_MAJOR}::Gui
-    Qt${QT_VERSION_MAJOR}::Qml)
+target_link_libraries(3-ParseCustomQmlType Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Qml)
+
+include(GNUInstallDirs)
+install(TARGETS 3-ParseCustomQmlType
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)

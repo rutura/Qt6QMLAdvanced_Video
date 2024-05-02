@@ -10,7 +10,7 @@ ObjectListWrapper::ObjectListWrapper(QObject *parent) : QObject(parent)
 bool ObjectListWrapper::initialize(QGuiApplication * app)
 {
     resetModel();
-    const QUrl url(u"qrc:/EditableObjectListModel/main.qml"_qs);
+    const QUrl url(u"qrc:/EditableObjectListModel/Main.qml"_qs);
 
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated,
                          app, [url](QObject *obj, const QUrl &objUrl) {
